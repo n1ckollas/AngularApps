@@ -1,0 +1,62 @@
+<div class="row">
+    <div class="col-md-9">
+      <ul class="subnav">
+        <li class=" subitem">
+          <a href="#" routerLink="/clients">
+          Dashboard
+          </a>
+        </li>
+        <li class="subitem">
+          <a  href="#" routerLink="/clients/register">
+          Register
+          </a>
+        </li>
+        <li class="subitem">
+          <a  href="#" routerLink="/clients/login">
+          Login
+          </a>
+        </li>
+      </ul>
+    </div>
+    <div class="col-md-3">
+      <app-sidebar></app-sidebar>
+    </div>
+  </div>
+
+<div class="row">
+	<div class="col-md-6">
+		<h4><i class="fa fa-users"></i> Clients</h4>
+	</div>
+	<div class="col-md-6">
+		<h4 class="pull-right text-muted"> Total Owed: {{totalOwed | currency:"USD":true}}</h4>
+	</div>
+</div>
+
+<table *ngIf="clients?.length > 0; else noClients" 
+        class="table table-striped"
+        >
+  <thead class="mdb-color darken-3">
+    <tr>
+      <th>ID</th>
+      <th>Name</th>
+      <th>Email</th>
+      <th>Balance</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let client of clients">
+      <td>{{client.id}}</td>
+    	<td>{{client.data.firstName}} {{client.data.lastName}}</td>
+    	<td>{{client.data.email}}</td>
+    	<td>{{client.data.balance | currency:"USD":true}}</td>
+    	<td><a [routerLink]="['client/'+client.id]" href="#" class="btn btn-secondary btn-sm"><i class="fa fa-arrow-circle-o-right"></i> Details</a></td>
+    </tr>
+  </tbody>
+</table>
+                                    
+<ng-template #noClients>
+<hr>
+ <h5>There are no clients in the system.</h5>
+
+</ng-template>
+

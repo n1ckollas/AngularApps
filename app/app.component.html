@@ -1,5 +1,8 @@
 <app-navbar></app-navbar>
 
 <div id="page" class="routeContainer" [@routeAnimation]="getDepth(myOutlet)">
-	<router-outlet #myOutlet="outlet"></router-outlet>
+	<div class="container">
+		<flash-messages></flash-messages>
+		<router-outlet #myOutlet="outlet"></router-outlet>
+	</div>
 </div>

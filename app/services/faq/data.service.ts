@@ -6,23 +6,6 @@ export class DataService {
   questions:Question[];
 
   constructor() {
-//   this.questions = [
-//      {
-//         text:'What is your name?',
-//         answer:'My name is Nick',
-//         hide:true,
-//      },
-//      {
-//         text:'How do you feel right now?',
-//         answer:'I feel great!',
-//         hide:true,
-//      },
-//      {
-//         text:'What is your favorite colour',
-//         answer:'Indigo',
-//         hide:true,
-//      },
-//   ];
   
   }
 
