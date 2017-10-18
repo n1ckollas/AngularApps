@@ -48,5 +48,8 @@ export class ClientService {
     this.client = this.clientDoc.valueChanges();
 		return this.client;
 	}
+	updateBalance(id, client){
+		this.af.collection('clients').doc(id).set(client);
+	}
 
 }

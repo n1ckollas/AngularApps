@@ -15,7 +15,7 @@ export class ClientDetailsComponent implements OnInit {
 	client: Client;
 	hasBalance:boolean = false;
 	showBalanceUpdateInput:boolean = false;
-
+	errorMessage:any;
 	constructor(
   	public clientService:ClientService,
   	public router:Router,
@@ -31,9 +31,19 @@ export class ClientDetailsComponent implements OnInit {
   	//Get client
   	this.clientService.getClient(this.id).subscribe(client => {
   		this.client = client;
-  		console.log('client.details.ts');
-  		console.log(this.client);
-  	});
+  		// console.log('client.details.ts');
+  		// console.log(this.client);
+  	},
+  	error => this.errorMessage = <any>error,
+  	() => this.router.navigate(['clients'])
+  	);
   }
+
+  updateBalance(id:string, client:Client){
+  	this.clientService.updateBalance(id, client);
+  	this.flashMessagesService.show('Balance Updated', {cssClass: 'alert-success', timeout:4000});
+  	this.router.navigate(['clients/']);
+  }
+
 
 }

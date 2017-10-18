@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ChangeDetectorRef } from '@angular/core';
 import { ClientService } from '../../../services/clientsapp/client.service';
 import { Client } from '../../../models/clientsapp/Client'
 import { AngularFireDatabase, AngularFireList, AngularFireObject } from 'angularfire2/database';
@@ -21,8 +22,14 @@ export class ClientsComponent implements OnInit {
 	clients:any[];
 	totalOwed:number;
 
-	constructor( public clientService:ClientService ){ 
-
+	constructor( public clientService:ClientService, 
+							 private ref: ChangeDetectorRef ){ 
+		this.ref.detach();
+		this.clientService.getClients().subscribe(clients =>{
+ 			this.clients = clients;
+ 			// console.log(this.clients[0].id);
+ 		});
+		this.ref.reattach();
 	}
 
 	ngOnInit() {
