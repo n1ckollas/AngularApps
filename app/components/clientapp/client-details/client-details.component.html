@@ -1,12 +1,15 @@
 <div class="row">
 	<div class="col-md-4">
-		<a routerLink="/clients" href=""  class="btn btn-link"><i class="fa fa-arrow-circle-o-left"></i>Back to dashboard</a>
+		<a routerLink="/clients"  href="#" class="btn btn-link"><i class="fa fa-arrow-circle-o-left"></i>Back to dashboard</a>
 	</div>
 	<div class="col-md-8">
 		<div class="btn-group pull-right">
-			<a [routerLink]="['/edit-client/'+id]" 
+			<a [routerLink]="['/clients/edit-client/'+id]" 
 				class="btn btn-secondary">Edit</a>
-			<button type="button" class="btn btn-danger">Delete</button>
+			<button type="button"
+			 class="btn btn-danger"
+			 (click)="onDeleteClick()"
+			 >Delete</button>
 		</div>
 	</div> 
 </div>

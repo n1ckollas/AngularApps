@@ -1,2 +1,19 @@
-<h1>Dashboard</h1>
+<a 
+*ngIf="isLoggedIn" 
+href="#" 
+(click)="onLogoutClick($event)" 
+class="btn btn-primary custom">
+  <i class="fa fa-sign-out"></i>
+  Sign Out
+</a>
+<a routerLink="settings" 
+	href="#"
+	class="btn btn-secondary"
+	>
+		<i class="fa fa-sliders" aria-hidden="true"></i>		
+</a>
+<p class="lead">
+	<i class="fa fa-user" aria-hidden="true"></i>
+	{{loggedInUser}}
 
+</p>

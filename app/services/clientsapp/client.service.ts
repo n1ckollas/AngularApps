@@ -16,10 +16,12 @@ export class ClientService {
 	clientDoc: AngularFirestoreDocument<any>;
 	client:any;
 
-
-
 	constructor( public af:AngularFirestore ) { 
-		this.clsCollection =  this.af.collection('clients')
+		this.getClients();
+	}
+
+	getClients(){
+		this.clsCollection =  this.af.collection('clients');
 		// this.cls = this.clsCollection.valueChanges();
 		this.cls = this.clsCollection.snapshotChanges().map(actions=>{
 			return actions.map(a => {
@@ -28,10 +30,7 @@ export class ClientService {
 				// console.log(data, id);
 				return {data, id}; 
 			})
-		})
-	}
-
-	getClients(){
+		});
 		return this.cls;
 	}
 
@@ -50,6 +49,14 @@ export class ClientService {
 	}
 	updateBalance(id, client){
 		this.af.collection('clients').doc(id).set(client);
+	}
+
+	updateClient(id, client){
+		this.af.collection('clients').doc(id).set(client);
+	}
+
+	deleteClient(id){
+		this.af.collection('clients').doc(id).delete();
 	}
 
 }

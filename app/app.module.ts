@@ -5,11 +5,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 // Route inmports
 import { RouterModule, Routes} from '@angular/router';
 import { Router, NavigationEnd, ActivatedRoute } from '@angular/router';
-
 // Flash messages
 import { FlashMessagesModule } from 'angular2-flash-messages';
-
-
 
 //AngularFire Imports
 import {AngularFireModule} from 'angularfire2';
@@ -46,17 +43,24 @@ import { PageNotFoundComponent } from './components/clientapp/page-not-found/pag
 // Service imports
 import { DataService } from './services/faq/data.service';
 import { ClientService } from './services/clientsapp/client.service';
-
+import { AuthService } from './services/clientsapp/auth.service';
+import { SettingsService } from './services/clientsapp/settings.service';
+// Guards
+import { AuthGuard } from './guards/auth.guard';
+import { RegisterGuard } from './guards/register.guard';
 
 const appRoutes: Routes = [
   {path:'', component:HomeComponent, data:{title: 'Home', depth : 1}},
   {path:'faq', component:QuestionListComponent, data:{title: 'FAQ', depth : 2}},
 
-  {path:'clients', component:ClientsComponent},
-  {path:'clients/register', component:RegisterComponent},
-  {path:'clients/login', component:LoginComponent},
-  {path:'clients/add-client', component:AddClientComponent},
-  {path:'clients/client/:id', component:ClientDetailsComponent},
+  {path:'clients', component:ClientsComponent, canActivate:[AuthGuard]},
+  {path:'register', component:RegisterComponent, canActivate:[RegisterGuard]},
+  {path:'login', component:LoginComponent},
+  {path:'clients/add-client', component:AddClientComponent, canActivate:[AuthGuard]},
+  {path:'clients/client/:id', component:ClientDetailsComponent, canActivate:[AuthGuard]},
+  {path:'clients/edit-client/:id', component:EditClientComponent, canActivate:[AuthGuard]},
+  {path:'clients/settings', component:SettingsComponent, canActivate:[AuthGuard]},
+
 
 ];
 
@@ -100,12 +104,16 @@ export const firebaseConfig = {
     AngularFireAuthModule, // imports firebase/auth, only needed for auth features
     AngularFireDatabaseModule,
     FlashMessagesModule,
-
+   
+ 
   ],
   providers: [DataService,     
-              // AngularFireDatabase,
-              // AngularFireAuth,
               ClientService,
+              AngularFireAuth,
+              AuthService,
+              AuthGuard,
+              SettingsService,
+              RegisterGuard,
               ],
   bootstrap: [AppComponent]
 })

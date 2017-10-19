@@ -22,15 +22,7 @@ export class ClientsComponent implements OnInit {
 	clients:any[];
 	totalOwed:number;
 
-	constructor( public clientService:ClientService, 
-							 private ref: ChangeDetectorRef ){ 
-		this.ref.detach();
-		this.clientService.getClients().subscribe(clients =>{
- 			this.clients = clients;
- 			// console.log(this.clients[0].id);
- 		});
-		this.ref.reattach();
-	}
+	constructor( public clientService:ClientService){}
 
 	ngOnInit() {
 		this.clientService.getClients().subscribe(clients =>{
