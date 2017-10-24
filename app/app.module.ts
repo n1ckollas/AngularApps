@@ -56,6 +56,8 @@ import { GitComponent } from './components/gitpros/git/git.component';
 const appRoutes: Routes = [
   {path:'', component:HomeComponent, data:{title: 'Home', depth : 1}},
   {path:'faq', component:QuestionListComponent, data:{title: 'FAQ', depth : 2}},
+// GitLookup App routes
+  {path:'gitusers', component:GitComponent },
 // Client App Routes
   {path:'clients', component:ClientsComponent, canActivate:[AuthGuard]},
   {path:'register', component:RegisterComponent, canActivate:[RegisterGuard]},
@@ -64,8 +66,7 @@ const appRoutes: Routes = [
   {path:'clients/client/:id', component:ClientDetailsComponent, canActivate:[AuthGuard]},
   {path:'clients/edit-client/:id', component:EditClientComponent, canActivate:[AuthGuard]},
   {path:'clients/settings', component:SettingsComponent, canActivate:[AuthGuard]},
-// GitLookup App routes
-  {path:'gitusers', component:GitComponent },
+
   
 
 ];
