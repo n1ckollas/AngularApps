@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
+import { HttpModule } from '@angular/http';
 // Route inmports
 import { RouterModule, Routes} from '@angular/router';
 import { Router, NavigationEnd, ActivatedRoute } from '@angular/router';
@@ -45,14 +46,17 @@ import { DataService } from './services/faq/data.service';
 import { ClientService } from './services/clientsapp/client.service';
 import { AuthService } from './services/clientsapp/auth.service';
 import { SettingsService } from './services/clientsapp/settings.service';
+import { GitService } from "./services/gitpros/git.service";
+
 // Guards
 import { AuthGuard } from './guards/auth.guard';
 import { RegisterGuard } from './guards/register.guard';
+import { GitComponent } from './components/gitpros/git/git.component';
 
 const appRoutes: Routes = [
   {path:'', component:HomeComponent, data:{title: 'Home', depth : 1}},
   {path:'faq', component:QuestionListComponent, data:{title: 'FAQ', depth : 2}},
-
+// Client App Routes
   {path:'clients', component:ClientsComponent, canActivate:[AuthGuard]},
   {path:'register', component:RegisterComponent, canActivate:[RegisterGuard]},
   {path:'login', component:LoginComponent},
@@ -60,7 +64,9 @@ const appRoutes: Routes = [
   {path:'clients/client/:id', component:ClientDetailsComponent, canActivate:[AuthGuard]},
   {path:'clients/edit-client/:id', component:EditClientComponent, canActivate:[AuthGuard]},
   {path:'clients/settings', component:SettingsComponent, canActivate:[AuthGuard]},
-
+// GitLookup App routes
+  {path:'gitusers', component:GitComponent },
+  
 
 ];
 
@@ -92,7 +98,8 @@ export const firebaseConfig = {
     LoginComponent,
     RegisterComponent,
     SettingsComponent,
-    PageNotFoundComponent
+    PageNotFoundComponent,
+    GitComponent
   ],
   imports: [
     BrowserModule,
@@ -104,16 +111,19 @@ export const firebaseConfig = {
     AngularFireAuthModule, // imports firebase/auth, only needed for auth features
     AngularFireDatabaseModule,
     FlashMessagesModule,
+    HttpModule,
    
  
   ],
-  providers: [DataService,     
+  providers: [
+              DataService,     
               ClientService,
               AngularFireAuth,
               AuthService,
               AuthGuard,
               SettingsService,
               RegisterGuard,
+              GitService,
               ],
   bootstrap: [AppComponent]
 })

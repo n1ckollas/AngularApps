@@ -1,0 +1,40 @@
+<div *ngIf="user">
+	<div class="card">
+		<div class="card-header">
+			<h1>{{user.name}}</h1>
+		</div>
+		<div class="card-body">
+			<div class="row">
+				<div class="col-md-4">
+					<img class="img-thumbnail" src="{{user.avatar_url}}">
+					<a class="btn btn-secondary btn-block" target="_blank" href={{user.html_url}}>Profile Link</a>
+				</div>
+				<div class="col-md-8">
+					<div class="stats">
+						<span class="btn btn-sm btn-primary">{{user.public_repos}} Public Repos</span>
+						<span class="btn btn-sm btn-warning">{{user.public_gists}} Public Gists</span>
+						<span class="btn btn-sm btn-success">{{user.followers}} Followers</span>
+						<span class="btn btn-sm btn-info">{{user.following}} Following</span>
+					</div>
+					<ul class="list-group">
+						<li class="list-group-item">Username:&nbsp;
+							<strong>{{user.login}}</strong>
+						</li>
+						<li class="list-group-item">Location:&nbsp;
+							<strong> {{user.location}}</strong>
+						</li>
+						<li class="list-group-item">Email: &nbsp;
+							<strong> {{user.email}}</strong>
+						</li>
+						<li class="list-group-item">Blog:&nbsp;
+							<strong> {{user.blog}}</strong>
+						</li>
+						<li class="list-group-item">Member Sinse:&nbsp; 
+							<strong> {{user.created_at}}</strong>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
