@@ -8,16 +8,26 @@ import { HttpClient } from '@angular/common/http';
   styleUrls: ['./git.component.css'],
 })
 export class GitComponent implements OnInit {
-	user:any[];
+	user:any;
+	repos:any[];
+	username:any;
 
   constructor(public git:GitService) {
-  	this.git.getUser().subscribe(user => {
-  		this.user = user;
-  		console.log(this.user);
-  	})
+  	this.user = false;
    }
 
   ngOnInit() {  
+  }
+
+  searchUser(){
+  	this.git.updateUser(this.username);
+  	this.git.getUser().subscribe(user => {
+  		this.user = user;
+  	});
+  	this.git.getRepos().subscribe(repos => {
+  		this.repos = repos;
+  	});
+
   }
 
 }
