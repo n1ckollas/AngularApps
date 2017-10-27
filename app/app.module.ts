@@ -3,6 +3,8 @@ import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { HttpModule } from '@angular/http';
+import { HttpClientModule } from '@angular/common/http';
+
 // Route inmports
 import { RouterModule, Routes} from '@angular/router';
 import { Router, NavigationEnd, ActivatedRoute } from '@angular/router';
@@ -10,12 +12,12 @@ import { Router, NavigationEnd, ActivatedRoute } from '@angular/router';
 import { FlashMessagesModule } from 'angular2-flash-messages';
 
 //AngularFire Imports
-import {AngularFireModule} from 'angularfire2';
+import { AngularFireModule } from 'angularfire2';
 import { AngularFirestoreModule } from 'angularfire2/firestore';
 // for auth    
-import {AngularFireAuthModule} from 'angularfire2/auth';
+import { AngularFireAuthModule } from 'angularfire2/auth';
 // for database
-import {AngularFireDatabaseModule} from 'angularfire2/database';
+import { AngularFireDatabaseModule } from 'angularfire2/database';
 // for auth
 import { AngularFireAuth } from 'angularfire2/auth';
 // for Observables
@@ -47,17 +49,23 @@ import { ClientService } from './services/clientsapp/client.service';
 import { AuthService } from './services/clientsapp/auth.service';
 import { SettingsService } from './services/clientsapp/settings.service';
 import { GitService } from "./services/gitpros/git.service";
+import { SpotyfiService } from "./services/spotifyapp/spotyfi.service";
+import { WorkoutService } from "./services/workouts/workout.service";
 
 // Guards
 import { AuthGuard } from './guards/auth.guard';
 import { RegisterGuard } from './guards/register.guard';
 import { GitComponent } from './components/gitpros/git/git.component';
+import { SpotifyComponent } from './components/spotify-app/spotify/spotify.component';
+import { WorkoutComponent } from './components/workouts/workout/workout.component';
 
 const appRoutes: Routes = [
   {path:'', component:HomeComponent, data:{title: 'Home', depth : 1}},
   {path:'faq', component:QuestionListComponent, data:{title: 'FAQ', depth : 2}},
 // GitLookup App routes
   {path:'gitusers', component:GitComponent },
+//Spotify app 
+  {path:'workout', component:WorkoutComponent},
 // Client App Routes
   {path:'clients', component:ClientsComponent, canActivate:[AuthGuard]},
   {path:'register', component:RegisterComponent, canActivate:[RegisterGuard]},
@@ -100,7 +108,9 @@ export const firebaseConfig = {
     RegisterComponent,
     SettingsComponent,
     PageNotFoundComponent,
-    GitComponent
+    GitComponent,
+    SpotifyComponent,
+    WorkoutComponent
   ],
   imports: [
     BrowserModule,
@@ -113,6 +123,7 @@ export const firebaseConfig = {
     AngularFireDatabaseModule,
     FlashMessagesModule,
     HttpModule,
+    HttpClientModule
    
  
   ],
@@ -125,6 +136,8 @@ export const firebaseConfig = {
               SettingsService,
               RegisterGuard,
               GitService,
+              SpotyfiService,
+              WorkoutService,
               ],
   bootstrap: [AppComponent]
 })
