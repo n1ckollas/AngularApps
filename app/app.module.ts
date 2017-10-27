@@ -42,6 +42,9 @@ import { LoginComponent } from './components/clientapp/login/login.component';
 import { RegisterComponent } from './components/clientapp/register/register.component';
 import { SettingsComponent } from './components/clientapp/settings/settings.component';
 import { PageNotFoundComponent } from './components/clientapp/page-not-found/page-not-found.component';
+import { GitComponent } from './components/gitpros/git/git.component';
+import { WorkoutComponent } from './components/workouts/workout/workout.component';
+import { WeatherComponent } from './components/weather-app/weather/weather.component';
 
 // Service imports
 import { DataService } from './services/faq/data.service';
@@ -49,23 +52,22 @@ import { ClientService } from './services/clientsapp/client.service';
 import { AuthService } from './services/clientsapp/auth.service';
 import { SettingsService } from './services/clientsapp/settings.service';
 import { GitService } from "./services/gitpros/git.service";
-import { SpotyfiService } from "./services/spotifyapp/spotyfi.service";
 import { WorkoutService } from "./services/workouts/workout.service";
+import { WeatherService } from "./services/weather-app/weather.service";
 
 // Guards
 import { AuthGuard } from './guards/auth.guard';
 import { RegisterGuard } from './guards/register.guard';
-import { GitComponent } from './components/gitpros/git/git.component';
-import { SpotifyComponent } from './components/spotify-app/spotify/spotify.component';
-import { WorkoutComponent } from './components/workouts/workout/workout.component';
 
 const appRoutes: Routes = [
   {path:'', component:HomeComponent, data:{title: 'Home', depth : 1}},
   {path:'faq', component:QuestionListComponent, data:{title: 'FAQ', depth : 2}},
 // GitLookup App routes
   {path:'gitusers', component:GitComponent },
-//Spotify app 
-  {path:'workout', component:WorkoutComponent},
+// Workouts app
+  {path:'workouts', component:WorkoutComponent},
+ // Weather app 
+  {path:'weather', component:WeatherComponent },
 // Client App Routes
   {path:'clients', component:ClientsComponent, canActivate:[AuthGuard]},
   {path:'register', component:RegisterComponent, canActivate:[RegisterGuard]},
@@ -109,8 +111,8 @@ export const firebaseConfig = {
     SettingsComponent,
     PageNotFoundComponent,
     GitComponent,
-    SpotifyComponent,
-    WorkoutComponent
+    WorkoutComponent,
+    WeatherComponent
   ],
   imports: [
     BrowserModule,
@@ -136,8 +138,8 @@ export const firebaseConfig = {
               SettingsService,
               RegisterGuard,
               GitService,
-              SpotyfiService,
               WorkoutService,
+              WeatherService,
               ],
   bootstrap: [AppComponent]
 })
