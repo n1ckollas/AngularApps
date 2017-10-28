@@ -1,3 +1,11 @@
-<p>
-  weather works!
-</p>
+<div *ngIf="weatherData">
+
+<h1>
+	Real Temp:
+	{{weatherData.current_observation.dewpoint_string}}
+</h1>
+<h2>
+	Feels Like:
+	{{weatherData.current_observation.feelslike_string}}
+</h2>
+</div>
