@@ -11,6 +11,7 @@ export class GitComponent implements OnInit {
 	user:any;
 	repos:any[];
 	username:any;
+  errors:any[];;
 
   constructor(public git:GitService) {
   	this.user = false;
@@ -20,13 +21,16 @@ export class GitComponent implements OnInit {
   }
 
   searchUser(){
+    this.errors = [];
   	this.git.updateUser(this.username);
-  	this.git.getUser().subscribe(user => {
-  		this.user = user;
-  	});
-  	this.git.getRepos().subscribe(repos => {
-  		this.repos = repos;
-  	});
+  	this.git.getUser().subscribe(
+      user => {this.user = user;},
+      error => {this.errors += error;}
+      );
+  	this.git.getRepos().subscribe(
+      repos => {this.repos = repos;},
+      error => {this.errors += error;}
+      );
 
   }
 
