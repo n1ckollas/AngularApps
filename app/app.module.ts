@@ -8,6 +8,7 @@ import { HttpClientModule } from '@angular/common/http';
 // Route inmports
 import { RouterModule, Routes} from '@angular/router';
 import { Router, NavigationEnd, ActivatedRoute } from '@angular/router';
+import { HashLocationStrategy, LocationStrategy } from '@angular/common';
 // Flash messages
 import { FlashMessagesModule } from 'angular2-flash-messages';
 
@@ -60,7 +61,7 @@ import { AuthGuard } from './guards/auth.guard';
 import { RegisterGuard } from './guards/register.guard';
 
 const appRoutes: Routes = [
-  {path:'', component:HomeComponent, data:{title: 'Home', depth : 1}},
+  {path:'', component:HomeComponent,  data:{title: 'Home', depth : 1} },
   {path:'faq', component:QuestionListComponent, data:{title: 'FAQ', depth : 2}},
 // GitLookup App routes
   {path:'gitusers', component:GitComponent },
@@ -118,7 +119,7 @@ export const firebaseConfig = {
     BrowserModule,
     BrowserAnimationsModule,
     FormsModule,
-    RouterModule.forRoot(appRoutes),
+    RouterModule.forRoot(appRoutes, { useHash: true }),
     AngularFireModule.initializeApp(firebaseConfig, 'clientapp-1fafd'),
     AngularFirestoreModule, // imports firebase/firestore, only needed for database features
     AngularFireAuthModule, // imports firebase/auth, only needed for auth features
@@ -140,6 +141,7 @@ export const firebaseConfig = {
               GitService,
               WorkoutService,
               WeatherService,
+              {provide: LocationStrategy, useClass:  HashLocationStrategy},
               ],
   bootstrap: [AppComponent]
 })
