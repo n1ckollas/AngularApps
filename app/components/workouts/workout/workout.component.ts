@@ -19,8 +19,9 @@ export class WorkoutComponent implements OnInit {
   	})
 
   }
-  list(){
-  	console.log(this.workouts);
+  workoutSelected(event, workout){
+    console.log(workout);
+
   }
 
 }

@@ -8,7 +8,7 @@ import { HttpClientModule } from '@angular/common/http';
 // Route inmports
 import { RouterModule, Routes} from '@angular/router';
 import { Router, NavigationEnd, ActivatedRoute } from '@angular/router';
-import { HashLocationStrategy, LocationStrategy } from '@angular/common';
+import { HashLocationStrategy, PathLocationStrategy, LocationStrategy } from '@angular/common';
 // Flash messages
 import { FlashMessagesModule } from 'angular2-flash-messages';
 
@@ -59,6 +59,7 @@ import { WeatherService } from "./services/weather-app/weather.service";
 // Guards
 import { AuthGuard } from './guards/auth.guard';
 import { RegisterGuard } from './guards/register.guard';
+import { PageDetailsComponent } from './components/workouts/page-details/page-details.component';
 
 const appRoutes: Routes = [
   {path:'', component:HomeComponent,  data:{title: 'Home', depth : 1} },
@@ -113,7 +114,8 @@ export const firebaseConfig = {
     PageNotFoundComponent,
     GitComponent,
     WorkoutComponent,
-    WeatherComponent
+    WeatherComponent,
+    PageDetailsComponent
   ],
   imports: [
     BrowserModule,
@@ -141,7 +143,7 @@ export const firebaseConfig = {
               GitService,
               WorkoutService,
               WeatherService,
-              {provide: LocationStrategy, useClass:  HashLocationStrategy},
+              {provide: LocationStrategy, useClass:  PathLocationStrategy},
               ],
   bootstrap: [AppComponent]
 })

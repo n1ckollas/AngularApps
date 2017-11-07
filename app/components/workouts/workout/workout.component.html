@@ -2,7 +2,7 @@
 
 
 		<ul *ngFor="let w of workouts">
-			<li>{{w.title}}</li>
+			<li (click)="workoutSelected($event, w)">{{w.title}}</li>
 		</ul>
 
 

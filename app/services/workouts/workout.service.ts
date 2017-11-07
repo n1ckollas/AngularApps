@@ -5,9 +5,7 @@ import 'rxjs/Rx';
 
 @Injectable()
 export class WorkoutService {
-	// static get prometers(){
-	// 	return [Http];
-	// }
+
 	apiKey:string;
 	workOutUrl:string;
 
