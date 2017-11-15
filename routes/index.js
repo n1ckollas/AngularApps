@@ -1,4 +1,3 @@
-//index html is served here
 
 var express = require('express');
 var path = require('path')
