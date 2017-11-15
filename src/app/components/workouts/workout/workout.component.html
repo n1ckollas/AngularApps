@@ -1,0 +1,8 @@
+<h1>Planed workouts</h1>
+
+
+		<ul *ngFor="let w of workouts">
+			<li (click)="workoutSelected($event, w)">{{w.title}}</li>
+		</ul>
+
+

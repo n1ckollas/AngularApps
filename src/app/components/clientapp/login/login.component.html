@@ -1,0 +1,29 @@
+<div class="row">
+	<div class="col-md-6 offset-md-3">
+		<div *ngIf="showRegister" class="card-block">
+			<a routerLink="/register" class="btn btn-secondary btn-block">
+				<i class="fa fa-user-plus" aria-hidden="true"></i>
+				Register</a>
+		</div>
+		<div class="card">
+			<div class="card-block">
+				<img src="/assets/imgs/logo.png" alt="" class="mx-auto d-block">
+				<h1 class="text-center">Sign In</h1>
+				<form (submit)="onSubmit()">
+					<div class="form-group">
+						<label for="email">Email:(for testing use: test@test.com)</label>
+						<input type="email" class="form-control" [(ngModel)]="email" name="email" required>
+					</div>
+					<div class="form-group">
+						<label for="password">Password(for testing use: 1234567)</label>
+						<input type="text" class="form-control" [(ngModel)]="password" name="password" required>
+					</div>
+					<input type="submit" class="btn btn-primary btn-block" value="Sign In">
+				</form>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+

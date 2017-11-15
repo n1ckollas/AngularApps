@@ -1,0 +1,51 @@
+<div class="container">
+	<h1 class="mainHeading">List of angular apps:</h1>
+	<div class="row">
+		<div class="col-md-4">
+			<div class="card">
+				<img class="img-fluid" [src]="imgPath">
+				<div class="card-block">
+					<hr>
+					<h4 class="card-title">FAQ App</h4>
+					<p class="card-text">
+						This FAQ app was purpously made to explore capabilities of Angular 4 framework. It's a simple app that takes a question and an answer and stores it despite the page refresh.
+					</p>
+					<a href="#" routerLink="/faq" class="btn btn-primary">
+						Take a Look
+					</a>
+				</div>
+			</div>
+		</div>		
+		<div class="col-md-4">
+			<div class="card">
+				<img class="img-fluid" [src]="clientsAppLogo">
+				<div class="card-block">
+					<hr>
+					<h4 class="card-title">Client Panel</h4>
+					<p class="card-text">
+						Client Panel is a Firebase App. In this app I went through pain and pleasure :) of implementing FireAuth system to register, log users in and out, and FireStore cloud api to store information about the clients.
+					</p>
+					<a href="#" routerLink="/clients" class="btn btn-primary">
+						Take a Look
+					</a>
+				</div>
+			</div>
+			
+		</div>
+		<div class="col-md-4">
+			<div class="card">
+				<img class="img-fluid" [src]="gitSearch">
+				<div class="card-block">
+					<hr>
+					<h4 class="card-title">Git Hub Profile Search</h4>
+					<p class="card-text">
+						The GitHub search app looks for a user, diplays user's details, repositories and info about them. GitHub's REST api v3 is the key in this App.
+					</p>
+					<a href="#" routerLink="/gitusers" class="btn btn-primary">
+						Take a Look
+					</a>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
