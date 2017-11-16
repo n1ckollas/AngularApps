@@ -38,9 +38,9 @@ router.post('/todo', function(req, res, next) {
 			"error" : "Invalid data"
 		})
 	}else{
-		db.save(todo, function(error, res) {	
-			if (err) {
-				res.send(err);
+		db.todos.save(todo, function(error, result) {	
+			if (error) {
+				res.send(error);
 			}else{
 				res.json(result); 
 			}
@@ -80,8 +80,8 @@ router.put('/todo/:id', function(req, res, next) {
 	}
 });
 
-// update
-router.put('/todo/:id', function(req, res, next) {
+// delte
+router.delete('/todo/:id', function(req, res, next) {
 	db.todos.remove({
 		_id: mongojs.ObjectId(req.params.id)
 	},'', function(err, result){

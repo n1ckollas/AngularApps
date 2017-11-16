@@ -5,10 +5,10 @@
 		<div class="col-md-8">
 			<div class="form-group">
 				<input type="text" class="form-control input-lg"
-				placeholder="Add Todo ..."
+				placeholder="Add a Todo ..."
 				autofocus #todoText>
 				<br>
-				<button class="btn btn-primary btn-block">
+				<button (click)="addTodo($event, todoText)" class="btn btn-primary btn-block">
 					Create
 				</button>
 			</div>
@@ -22,17 +22,31 @@
 		<div class="col-md-2"></div>
 		<div class="col-md-8 row">
 				<div class="col-md-1">
-					<input type="checkbox" class="">
+					<input type="checkbox" 
+					[checked]="todo.isCompleted"
+					(click)="updateStatus(todo)">
 				</div>
 				<div class="col-md-7">
-					<p>{{todo.text}}</p>
+					<span [hidden]="todo.isEditMode">{{todo.text}}</span>
+					<input type="text" 
+					[hidden]="!todo.isEditMode" 
+					[value]="todo.text"
+					(keypress)="updateTodoText($event, todo)">
+					<input type="button" 
+					[hidden]="!todo.isEditMode" 
+					value="Cancel" 
+					(click)="setEditState(todo, false)"
+					class="btn btn-warning">
 				</div>
 				<div class="col-md-4">
 					<div class="btn-group pull-right" role="group">
-						<input type="button" 
+						<input type="button"
+						[disabled]="todo.isCompleted"
+						(click)="setEditState(todo, true)" 
 						class="btn btn-secondary" 
 						value="Edit">
-						<input type="button" 
+						<input type="button"
+						(click)="deleteTodo(todo)"  
 						class="btn btn-danger" 
 						value="Delete">
 					</div>
@@ -41,4 +55,5 @@
 		</div>
 		<div class="col-md-2"></div>
 	</div>
+	<br>
 </div>
