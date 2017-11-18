@@ -26,7 +26,7 @@ function callback(error, response, body) {
 }
 
 router.get('/spotify', function(req, res){
-	res.send({'hello':'world'});
+	res.send({'hello':'World is amazing'});
 })
 
 // request(options, callback);
