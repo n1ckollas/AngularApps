@@ -3,7 +3,6 @@ import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { HttpModule } from '@angular/http';
-import { HttpClientModule } from '@angular/common/http';
 
 // Route inmports
 import { RouterModule, Routes} from '@angular/router';
@@ -48,6 +47,8 @@ import { WorkoutComponent } from './components/workouts/workout/workout.componen
 import { WeatherComponent } from './components/weather-app/weather/weather.component';
 import { PageDetailsComponent } from './components/workouts/page-details/page-details.component';
 import { TodoComponent } from './components/todosapp/todo/todo.component';
+import { SpotifyAppComponent } from './components/spotify/spotify-app/spotify-app.component';
+
 
 // Service imports
 import { DataService } from './services/faq/data.service';
@@ -58,6 +59,7 @@ import { GitService } from "./services/gitpros/git.service";
 import { WorkoutService } from "./services/workouts/workout.service";
 import { WeatherService } from "./services/weather-app/weather.service";
 import { TodosService } from "./services/todos/todos.service";
+import { SpotifyService } from "./services/spotify/spotify.service";
 
 // Guards
 import { AuthGuard } from './guards/auth.guard';
@@ -73,6 +75,8 @@ const appRoutes: Routes = [
   {path:'workouts', component:WorkoutComponent},
 // todo's app
   {path:'tasks', component:TodoComponent},
+//spotify app
+  {path:'spotify', component:SpotifyAppComponent},
  // Weather app 
   {path:'weather', component:WeatherComponent },
 // Client App Routes
@@ -121,7 +125,8 @@ export const firebaseConfig = {
     WorkoutComponent,
     WeatherComponent,
     PageDetailsComponent,
-    TodoComponent
+    TodoComponent,
+    SpotifyAppComponent
   ],
   imports: [
     BrowserModule,
@@ -134,7 +139,6 @@ export const firebaseConfig = {
     AngularFireDatabaseModule,
     FlashMessagesModule,
     HttpModule,
-    HttpClientModule
    
  
   ],
@@ -151,6 +155,7 @@ export const firebaseConfig = {
               WeatherService,
               {provide: LocationStrategy, useClass:  PathLocationStrategy},
               TodosService,
+              SpotifyService,
               ],
   bootstrap: [AppComponent]
 })

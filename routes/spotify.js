@@ -1,19 +1,10 @@
 var express =	require('express');
 const https =	require('https');
 var request = require('request');
-const rp = require('request-promise');
-var querystring = require('querystring');
-var http = require('http');
-var fs = require('fs');
 const credos = require('./credentials');
 
-
-
-var app = 		express();
+var app 		=	express();
 var router	=	express.Router();
-console.log(credos.client_id);
-console.log(credos.client_secret);
-
 
 
 const options = {
@@ -34,7 +25,15 @@ function callback(error, response, body) {
 	console.log("body",body);
 }
 
-request(options, callback);
+router.get('/spotify', function(req, res){
+	res.send({'hello':'world'});
+})
+
+// request(options, callback);
+
+
+
+module.exports = router;
 
 
 
