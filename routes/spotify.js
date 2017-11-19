@@ -1,10 +1,12 @@
 var express =	require('express');
-const https =	require('https');
+const http =	require('http');
 var request = require('request');
+var qs = require('querystring');
 const credos = require('./credentials');
 
 var app 		=	express();
 var router	=	express.Router();
+
 
 
 const options = {
@@ -19,17 +21,24 @@ const options = {
   json: true
 }
 
-function callback(error, response, body) {
-	console.log("error:",error);
-	console.log("Responce",response);
-	console.log("body",body);
-}
 
 router.get('/spotify', function(req, res){
-	res.send({'hello':'World is amazing'});
+	// console.log(req.params);
+	request(options, function(error, responce, body){
+		var token = body.access_token;
+		var options = {
+      url: 'https://api.spotify.com/v1/users/jmperezperez',
+      headers: {
+        'Authorization': 'Bearer ' + token
+      },
+      json: true
+    };
+    request.get(options, function(error, response, body) {
+     res.json(body);
+		});
+	});
 })
 
-// request(options, callback);
 
 
 
