@@ -6,7 +6,8 @@ import { SpotifyService } from '../../../services/spotify/spotify.service';
   styleUrls: ['./spotify-app.component.css']
 })
 export class SpotifyAppComponent implements OnInit {
-	answer:any;
+	responce:boolean = false;
+  artists:any;
   artist = '';
 
   constructor(public sp:SpotifyService) {}
@@ -17,11 +18,12 @@ export class SpotifyAppComponent implements OnInit {
 
   artistsSearch(artist:string){
   	this.sp.getArtists(artist).subscribe(res => {
-  		this.answer = res;
+  		this.artists = res;
+      this.responce = true;
       console.log('search for:');
       console.log(artist);
       console.log('returns');
-  		console.log(this.answer);
+  		console.log(this.artists);
   	})
   }
 

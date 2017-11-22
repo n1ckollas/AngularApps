@@ -7,5 +7,13 @@
     <input (keyup)="onKey($event)" type="text" class="form-control" id="exampleInputEmail1" aria-describedby="
     emailHelp" placeholder="Artist search">
     <br>
-	 </div>
+	</div>
+	<div *ngIf="responce">
+		<div class="col-md-8 margin_sp">
+			<h4>Results:</h4>
+			<div *ngFor="let a of artists.artists.items">
+				{{a.name}}
+				<br>
+		</div>
+	</div>
 </div>
