@@ -1,19 +1,27 @@
-
-
-<div class="text-center">
-	<h1>Search for music here</h1>
-	<div class="form-group col-md-8 margin_sp">
-    <label for="exampleInputEmail1">Artists : </label>
-    <input (keyup)="onKey($event)" type="text" class="form-control" id="exampleInputEmail1" aria-describedby="
-    emailHelp" placeholder="Artist search">
-    <br>
-	</div>
-	<div *ngIf="responce">
-		<div class="col-md-8 margin_sp">
-			<h4>Results:</h4>
-			<div *ngFor="let a of artists.artists.items">
-				{{a.name}}
-				<br>
+<h1>Search for music here</h1>
+<div class="form-group col-md-8 margin_sp text-center">
+  <label for="exampleInputEmail1">Artists : </label>
+  <input (keyup)="onKey($event)" type="text" class="form-control" id="exampleInputEmail1" aria-describedby="
+  emailHelp" placeholder="Artist search">
+  <br>
+</div>
+<div *ngIf="responce">
+	<h4>Results:</h4>
+	<div class="row">
+		<div *ngFor="let i of searchTerms.artists.items">
+			
+			<div class="card" style="width: 20rem; margin:0 10px;">
+					<div *ngIf="i.images.length > 0">
+				  <img class="card-img-top img-fluid" src="{{i.images[0].url}}" alt="Card image cap">
+				  </div>
+				  <div class="card-block">
+				    <h4 class="card-title">{{i.name}}</h4>
+				    <p class="card-text">{{i.genres[0]}}</p>
+				    <a href="#" class="btn btn-primary">See me on Spotify</a>
+				  </div>
+			</div>
+			
+			<br>
 		</div>
 	</div>
 </div>
