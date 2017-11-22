@@ -12,19 +12,21 @@ export class SpotifyAppComponent implements OnInit {
   constructor(public sp:SpotifyService) {}
 
   ngOnInit() {
-  	this.artistsSearch();
+  	
   }
 
-  onKey(event:any){
-    this.artist = event.target.value
-    console.log(this.artist);
-  }
-
-  artistsSearch(){
-  	this.sp.getArtists().subscribe(res => {
+  artistsSearch(artist:string){
+  	this.sp.getArtists(artist).subscribe(res => {
   		this.answer = res;
+      console.log('search for:');
+      console.log(artist);
+      console.log('returns');
   		console.log(this.answer);
   	})
   }
 
+   onKey(event:any){
+    this.artist = event.target.value;
+    this.artistsSearch(this.artist);
+  }
 }

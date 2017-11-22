@@ -9,8 +9,8 @@ export class SpotifyService {
 
   constructor(private _http:Http) { }
 
-  getArtists(){
-  	return this._http.get('/api/v2/spotify')
+  getArtists(artist:string){
+  	return this._http.get('/api/v2/spotify/:' + artist)
   		.map(response => response.json());
   }
 }

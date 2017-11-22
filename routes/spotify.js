@@ -22,12 +22,14 @@ const options = {
 }
 
 
-router.get('/spotify', function(req, res){
-	// console.log(req.params);
+router.get('/spotify/:artist', function(req, res){
+	artist = req.params.artist;
+	artist = artist.slice(1, artist.length);
+	console.log(artist);
 	request(options, function(error, responce, body){
 		var token = body.access_token;
 		var options = {
-      url: 'https://api.spotify.com/v1/users/jmperezperez',
+      url: 'https://api.spotify.com/v1/search?q='+artist+'&type=artist',
       headers: {
         'Authorization': 'Bearer ' + token
       },
