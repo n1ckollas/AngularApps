@@ -6,15 +6,21 @@ import { SpotifyService } from '../../../services/spotify/spotify.service';
   styleUrls: ['./spotify-app.component.css']
 })
 export class SpotifyAppComponent implements OnInit {
-	answer:any
+	answer:any;
+  artist = '';
 
   constructor(public sp:SpotifyService) {}
 
   ngOnInit() {
-  	this.artists()
+  	this.artistsSearch();
   }
 
-  artists(){
+  onKey(event:any){
+    this.artist = event.target.value
+    console.log(this.artist);
+  }
+
+  artistsSearch(){
   	this.sp.getArtists().subscribe(res => {
   		this.answer = res;
   		console.log(this.answer);

@@ -4,7 +4,7 @@
 	<h1>Search for music here</h1>
 	<div class="form-group col-md-8 margin_sp">
     <label for="exampleInputEmail1">Artists : </label>
-    <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="
+    <input (keyup)="onKey($event)" type="text" class="form-control" id="exampleInputEmail1" aria-describedby="
     emailHelp" placeholder="Artist search">
     <br>
 	 </div>
