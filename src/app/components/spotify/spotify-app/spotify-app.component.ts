@@ -29,6 +29,8 @@ export class SpotifyAppComponent implements OnInit {
 
    onKey(event:any){
     this.artist = event.target.value;
-    this.artistsSearch(this.artist);
+    if(this.artist != ''){
+      this.artistsSearch(this.artist);
+    }
   }
 }

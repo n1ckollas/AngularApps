@@ -48,6 +48,8 @@ import { WeatherComponent } from './components/weather-app/weather/weather.compo
 import { PageDetailsComponent } from './components/workouts/page-details/page-details.component';
 import { TodoComponent } from './components/todosapp/todo/todo.component';
 import { SpotifyAppComponent } from './components/spotify/spotify-app/spotify-app.component';
+import { ArtistDetailsComponent } from './components/spotify/artist-details/artist-details.component';
+
 
 
 // Service imports
@@ -65,7 +67,6 @@ import { SpotifyService } from "./services/spotify/spotify.service";
 import { AuthGuard } from './guards/auth.guard';
 import { RegisterGuard } from './guards/register.guard';
 
-
 const appRoutes: Routes = [
   {path:'', component:HomeComponent,  data:{title: 'Home', depth : 1} },
   {path:'faq', component:QuestionListComponent, data:{title: 'FAQ', depth : 2}},
@@ -77,6 +78,7 @@ const appRoutes: Routes = [
   {path:'tasks', component:TodoComponent},
 //spotify app
   {path:'spotify', component:SpotifyAppComponent},
+  {path:'spotify/:id', component:ArtistDetailsComponent},
  // Weather app 
   {path:'weather', component:WeatherComponent },
 // Client App Routes
@@ -126,7 +128,8 @@ export const firebaseConfig = {
     WeatherComponent,
     PageDetailsComponent,
     TodoComponent,
-    SpotifyAppComponent
+    SpotifyAppComponent,
+    ArtistDetailsComponent,
   ],
   imports: [
     BrowserModule,
