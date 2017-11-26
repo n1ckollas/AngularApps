@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { SpotifyService } from '../../../services/spotify/spotify.service';
+
 
 
 @Component({
@@ -9,13 +11,24 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class ArtistDetailsComponent implements OnInit {
 	id:string;
+	details:any;
 
-  constructor(public route:ActivatedRoute) {
+  constructor(public route:ActivatedRoute, public sp:SpotifyService) {
+  	this.id = this.route.snapshot.paramMap.get('id');
+  	this.artistDetails(this.id);
   }
 
   ngOnInit() {
-  	this.id = this.route.snapshot.paramMap.get('id');
-  	console.log(this.id);
+
   }
+
+  artistDetails(id:string){
+  	console.log(id);
+  	// this.sp.getArtistDetails(id).subscribe(r =>{
+  	// 	this.details = r
+  	// })
+  }
+
+
 
 }

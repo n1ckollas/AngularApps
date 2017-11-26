@@ -13,4 +13,7 @@ export class SpotifyService {
   	return this._http.get('/api/v2/spotify/:' + artist)
   		.map(response => response.json());
   }
+  getArtistDetails(id){
+  	// return this._http.post()
+  }
 }
