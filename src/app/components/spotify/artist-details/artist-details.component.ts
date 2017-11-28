@@ -23,10 +23,10 @@ export class ArtistDetailsComponent implements OnInit {
   }
 
   artistDetails(id:string){
-  	console.log(id);
-  	// this.sp.getArtistDetails(id).subscribe(r =>{
-  	// 	this.details = r
-  	// })
+  	this.sp.getArtistDetails(id).subscribe(res =>{
+  		this.details = res;
+  		console.log(this.details);
+  	})
   }
 
 

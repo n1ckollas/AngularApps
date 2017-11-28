@@ -30,7 +30,6 @@ function getToken(t){
 router.get('/spotify/:artist', function(req, res){
 	artist = req.params.artist;
 	artist = artist.slice(1, artist.length);
-	console.log(artist);
 	request(options, function(error, responce, body){
 		getToken(body.access_token);
 		var token = body.access_token;
@@ -48,6 +47,19 @@ router.get('/spotify/:artist', function(req, res){
 })
 
 
+
+
+router.post('/spotify/details', function(req, res){
+	console.log(req.body.artist_id);
+	var options = {
+		url:'https://api.spotify.com/v1/artists/' + req.body.artist_id + '/albums',
+		headers:{'Authorization': 'Bearer ' + token},
+		json:true
+	}
+	request.get(options, function(error, responce, body){
+		res.json(body);
+	})
+})
 
 
 
