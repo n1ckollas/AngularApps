@@ -50,17 +50,24 @@ router.get('/spotify/:artist', function(req, res){
 
 
 router.post('/spotify/details', function(req, res){
+		var options = {
+			url:'',
+			headers:{'Authorization': 'Bearer ' + token},
+			json:true
+		}
 	console.log(req.body.artist_id);
-	var options = {
-		url:'https://api.spotify.com/v1/artists/' + req.body.artist_id + '/albums',
-		headers:{'Authorization': 'Bearer ' + token},
-		json:true
+	if(req.body.artist_id){
+		options.url = 'https://api.spotify.com/v1/artists/' + req.body.artist_id + '/albums';
+		request.get(options, function(error, responce, body){
+			res.json(body);
+		})
+	}else if (req.body.album_id){
+		options.url = 'https://api.spotify.com/v1/albums/' + req.body.album_id + '/tracks';
+		request.get(options, function(error, responce, body){
+			res.json(body);
+		})
 	}
-	request.get(options, function(error, responce, body){
-		res.json(body);
-	})
 })
-
 
 
 module.exports = router;

@@ -20,6 +20,12 @@ export class SpotifyService {
 		return this._http.post('/api/v2/spotify/details', JSON.stringify({'artist_id' : id}), {headers: headers})
 			.map(response => response.json());
   }
+  
+  getAlbumTracks(album_id:string){
+  	var headers = new Headers({'Content-Type': 'application/json'});
+  	return this._http.post('/api/v2/spotify/details', JSON.stringify({'album_id': album_id}), {headers: headers})
+  		.map(response => response.json());
+  }
 }
 
 
