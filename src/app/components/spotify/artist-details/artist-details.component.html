@@ -1,3 +1,24 @@
-<p>
-  artist-details works!
-</p>
+<div *ngIf="albums">
+	<h1>{{albums.items[0].artists[0].name}}'s albums:</h1>
+	<div class="card-deck">
+		<div *ngFor="let a of albums.items">
+			<br>
+			<div class="card">
+				<div *ngIf="a.images.length > 0">
+					<img class="card-img-top img-fluid" src="{{a.images[0].url}}" alt="Card image cap">
+				</div>
+		    <div class="card-block">
+		      <h4 class="card-title">Album: {{a.name}}</h4>
+		      <button (click)="getTracks(a.id)" class="btn btn-default">Load tracks</button>
+		    </div>
+		    <div class="card-footer">
+		      <small class="text-muted"> Track 1 .............................</small>
+		    </div>
+		    <div class="card-footer">
+		      <small class="text-muted"> Track 2 .............................</small>
+		    </div>
+		  </div>
+
+		</div>
+	</div>
+</div>

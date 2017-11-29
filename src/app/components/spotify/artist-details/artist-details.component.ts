@@ -11,7 +11,7 @@ import { SpotifyService } from '../../../services/spotify/spotify.service';
 })
 export class ArtistDetailsComponent implements OnInit {
 	id:string;
-	details:any;
+	albums:any;
 
   constructor(public route:ActivatedRoute, public sp:SpotifyService) {
   	this.id = this.route.snapshot.paramMap.get('id');
@@ -24,11 +24,13 @@ export class ArtistDetailsComponent implements OnInit {
 
   artistDetails(id:string){
   	this.sp.getArtistDetails(id).subscribe(res =>{
-  		this.details = res;
-  		console.log(this.details);
+  		this.albums = res;
+  		console.log(this.albums);
   	})
   }
 
-
+  getTracks(id:string){
+  	console.log(id);
+  }
 
 }

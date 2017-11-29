@@ -17,7 +17,6 @@ export class SpotifyService {
   getArtistDetails(id){
   	var headers = new Headers();
   	headers.append('Content-Type', 'application/json');
-  	console.log(id);
 		return this._http.post('/api/v2/spotify/details', JSON.stringify({'artist_id' : id}), {headers: headers})
 			.map(response => response.json());
   }
