@@ -31,6 +31,8 @@ export class ArtistDetailsComponent implements OnInit {
   }
 
   getTracks(album_id:string){
+    var doc = document.getElementById('myid').children;
+    console.log(doc);
   	this.sp.getAlbumTracks(album_id).subscribe(res => {
   		this.tracks = res;
   		console.log(this.tracks);
