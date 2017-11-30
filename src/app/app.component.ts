@@ -19,8 +19,8 @@ import { trigger, transition, group, query, style, animate } from '@angular/anim
   		query(':enter', style({transform: 'translateX(100%)'})),
   		query(':enter, :leave', style({position: 'absolute', top:0, left:0, right:0})),
   		group([
-  			query(':leave', [animate('100ms ease-in', style({transform: 'translateX(-100%)'}) )]),
-  			query(':enter', [animate('100ms ease-in', style({transform: 'translateX(0)'}) )]),
+  			query(':leave', [animate('150ms ease-in', style({transform: 'translateX(-100%)'}) )]),
+  			query(':enter', [animate('150ms ease-in', style({transform: 'translateX(0)'}) )]),
   			]),
   		]),
   	transition('2 => 1', [

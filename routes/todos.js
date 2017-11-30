@@ -1,4 +1,11 @@
-// this is server side file wher apis will be called
+// Uncomment on server
+// var express = require('../lib/node_modules/express');
+// var path = require('../lib/node_modules/path');
+// var router = express.Router();
+// var mongojs = require('../lib/node_modules/mongojs');
+
+
+
 var express = require('express');
 var path = require('path')
 var router = express.Router();

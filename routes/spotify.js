@@ -1,9 +1,18 @@
-var express =	require('express');
+// Uncomment on server
+// const express = require('./lib/node_modules/express');
+// const http = require('http');
+// const request = require('./lib/node_modules/request');
+
+
+
+
+const express =	require('express');
 const http =	require('http');
-var request = require('request');
-var qs = require('querystring');
+const request = require('request');
+
+
 const credos = require('./credentials');
-var token
+var token;
 
 var app 		=	express();
 var router	=	express.Router();
