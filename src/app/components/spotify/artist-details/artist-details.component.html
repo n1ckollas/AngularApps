@@ -9,20 +9,20 @@
 				</div>
 		    <div class="card-block">
 		      <h4 class="card-title">Album: {{a.name}}</h4>
-		      <button (click)="getTracks(a.id)" class="btn btn-default">Load track previews</button>
+		      <button (click)="getTracks(a.id)" class="btn btn-info">Load track previews</button>
 		    </div>
-		    <div class="card-footer">
-		      <audio controls>
-		      	<source src="https://p.scdn.co/mp3-preview/6d00206e32194d15df329d4770e4fa1f2ced3f57" type="audio/ogg">
-		      	<source src="https://p.scdn.co/mp3-preview/6d00206e32194d15df329d4770e4fa1f2ced3f57" type="audio/mpeg">
-						your browser doesnt support this.
-		      </audio>
-		    </div>
-		    <div class="card-footer">
-		      <small class="text-muted"> Track 2 .............................</small>
-		    </div>
-		  </div>
-
+				<div *ngIf="tracks">
+					<div *ngFor="let t of tracks.items">
+				    <div class="card-footer">
+				    	<p class="card-text">{{t.name}}</p>
+				      <audio controls>
+				      	<source src="{{t.preview_url}}" type="audio/ogg">
+				      	<source src="{{t.preview_url}}" type="audio/mpeg">
+								Your browser doesnt support this. But chrome does.
+				      </audio>
+				    </div>
+					</div>
+				</div>
 		</div>
 	</div>
 </div>
