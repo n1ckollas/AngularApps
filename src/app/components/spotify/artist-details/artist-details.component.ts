@@ -12,7 +12,7 @@ import { SpotifyService } from '../../../services/spotify/spotify.service';
 export class ArtistDetailsComponent implements OnInit {
 	id:string;
 	albums:any;
-	tracks:any;
+  hidden:boolean = true;
 
   constructor(public route:ActivatedRoute, public sp:SpotifyService) {
   	this.id = this.route.snapshot.paramMap.get('id');
@@ -26,19 +26,28 @@ export class ArtistDetailsComponent implements OnInit {
   artistDetails(id:string){
   	this.sp.getArtistDetails(id).subscribe(res =>{
   		this.albums = res;
-  		console.log(this.albums);
   	})
   }
 
   getTracks(album_id:string){
-    console.log(album_id);
+    this.hidden = false;
+    var tracks;
     var id_div = document.getElementById(album_id);
-    id_div.innerHTML += '<p>button is clicked</p>';
-    console.log(id_div);
-  	// this.sp.getAlbumTracks(album_id).subscribe(res => {
-  	// 	this.tracks = res;
-  	// 	console.log(this.tracks);
-  	// })
+
+  	this.sp.getAlbumTracks(album_id).subscribe(res => {
+  		tracks = res;
+      for (var i = tracks.items.length - 1; i >= 0; i--) {
+        id_div.innerHTML += '<div class="card-footer"'+
+                              '<p>Name: '+ tracks.items[i].name +'</p>'+
+                              '<audio controls>' +
+                                '<source src="'+ tracks.items[i].preview_url +'" type="audio/ogg">'+
+                                '<source src="'+ tracks.items[i].preview_url +'" type="audio/mpeg">'+
+                                'Your browser doesnt support this. But chrome does.'+
+                              '</audio>'+
+                            '</div>';
+        id_div.classList.remove('hideMe');
+      }
+  	})
   }
 
 }

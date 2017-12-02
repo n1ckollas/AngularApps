@@ -1,6 +1,6 @@
 <div *ngIf="albums">
 	<h1>{{albums.items[0].artists[0].name}}'s albums:</h1>
-	<div class="card-deck">
+	<div class="card-columns">
 		<div *ngFor="let a of albums.items">
 			<br>
 			<div class="card">
@@ -11,21 +11,7 @@
 		      <h4 class="card-title">Album: {{a.name}}</h4>
 		      <button (click)="getTracks(a.id)" class="btn btn-info">Load track previews</button>
 		    </div>
-		    <div id="{{a.id}}">
-		    	<p>div with id</p>
-		    </div>
-				<div *ngIf="tracks">
-					<div *ngFor="let t of tracks.items">
-				    <div class="card-footer">
-				    	<p class="card-text">{{t.name}}</p>
-				      <audio controls>
-				      	<source src="{{t.preview_url}}" type="audio/ogg">
-				      	<source src="{{t.preview_url}}" type="audio/mpeg">
-								Your browser doesnt support this. But chrome does.
-				      </audio>
-				    </div>
-					</div>
-				</div>
+		    <div id="{{a.id}}" class="hideMe"></div>
 		</div>
 	</div>
 </div>
