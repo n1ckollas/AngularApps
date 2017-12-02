@@ -4,6 +4,10 @@
 .hideMe{
 	display:none!important;
 }
+.card-inverse{
+	background-color: #333;
+	border-color: #333;
+}
 .card-columns {
   @include media-breakpoint-only(lg) {
     column-count: 4;

@@ -3,7 +3,7 @@
 	<div class="card-columns">
 		<div *ngFor="let a of albums.items">
 			<br>
-			<div class="card">
+			<div class="card card-inverse">
 				<div *ngIf="a.images.length > 0">
 					<img class="card-img-top img-fluid" src="{{a.images[0].url}}" alt="Card image cap">
 				</div>
