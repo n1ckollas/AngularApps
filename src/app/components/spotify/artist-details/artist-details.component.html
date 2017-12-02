@@ -9,9 +9,12 @@
 				</div>
 		    <div class="card-block">
 		      <h4 class="card-title">Album: {{a.name}}</h4>
-		      <button (click)="getTracks(a.id)" class="btn btn-info">Load track previews</button>
+		      <div class="btn-group">
+		      	<button (click)="getTracks(a.id)" class="btn btn-outline-success">Load track previews</button>
+		      	<button (click)="hideTracks(a.id)" id="b-{{a.id}}" class="btn btn-outline-info">Hide 'em</button>
+		      </div>
 		    </div>
-		    <div id="{{a.id}}" class="hideMe"></div>
+		    <div id="{{a.id}}"></div>
 		</div>
 	</div>
 </div>

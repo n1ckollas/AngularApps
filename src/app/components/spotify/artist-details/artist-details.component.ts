@@ -12,7 +12,7 @@ import { SpotifyService } from '../../../services/spotify/spotify.service';
 export class ArtistDetailsComponent implements OnInit {
 	id:string;
 	albums:any;
-  hidden:boolean = true;
+  hidden:boolean = false;
 
   constructor(public route:ActivatedRoute, public sp:SpotifyService) {
   	this.id = this.route.snapshot.paramMap.get('id');
@@ -32,12 +32,12 @@ export class ArtistDetailsComponent implements OnInit {
   getTracks(album_id:string){
     this.hidden = false;
     var tracks;
-    var id_div = document.getElementById(album_id);
+    var divId = document.getElementById(album_id);
 
   	this.sp.getAlbumTracks(album_id).subscribe(res => {
   		tracks = res;
       for (var i = tracks.items.length - 1; i >= 0; i--) {
-        id_div.innerHTML += '<div class="card-footer"'+
+        divId.innerHTML += '<div class="card-footer"'+
                               '<p>Name: '+ tracks.items[i].name +'</p>'+
                               '<audio controls>' +
                                 '<source src="'+ tracks.items[i].preview_url +'" type="audio/ogg">'+
@@ -45,9 +45,22 @@ export class ArtistDetailsComponent implements OnInit {
                                 'Your browser doesnt support this. But chrome does.'+
                               '</audio>'+
                             '</div>';
-        id_div.classList.remove('hideMe');
       }
   	})
+  }
+
+  hideTracks(album_id:string){
+    var divId = document.getElementById(album_id);
+    var bId = document.getElementById('b-'+ album_id);
+    if(this.hidden === false){
+      this.hidden = true;
+      divId.classList.add('hideMe');
+      bId.innerText = "Show 'em";
+    }else if(this.hidden === true){
+      this.hidden = false;
+      divId.classList.remove('hideMe');
+      bId.innerText = "Hide 'em";
+    }
   }
 
 }
