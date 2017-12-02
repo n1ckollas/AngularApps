@@ -11,8 +11,8 @@
 		      <h4 class="card-title">Album: {{a.name}}</h4>
 		      <button (click)="getTracks(a.id)" class="btn btn-info">Load track previews</button>
 		    </div>
-		    <div id="myid">
-		    	text hello
+		    <div id="{{a.id}}">
+		    	<p>div with id</p>
 		    </div>
 				<div *ngIf="tracks">
 					<div *ngFor="let t of tracks.items">

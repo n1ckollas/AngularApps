@@ -31,12 +31,14 @@ export class ArtistDetailsComponent implements OnInit {
   }
 
   getTracks(album_id:string){
-    var doc = document.getElementById('myid').children;
-    console.log(doc);
-  	this.sp.getAlbumTracks(album_id).subscribe(res => {
-  		this.tracks = res;
-  		console.log(this.tracks);
-  	})
+    console.log(album_id);
+    var id_div = document.getElementById(album_id);
+    id_div.innerHTML += '<p>button is clicked</p>';
+    console.log(id_div);
+  	// this.sp.getAlbumTracks(album_id).subscribe(res => {
+  	// 	this.tracks = res;
+  	// 	console.log(this.tracks);
+  	// })
   }
 
 }
