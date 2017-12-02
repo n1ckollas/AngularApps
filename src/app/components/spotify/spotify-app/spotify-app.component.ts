@@ -20,10 +20,6 @@ export class SpotifyAppComponent implements OnInit {
   	this.sp.getArtists(artist).subscribe(res => {
   		this.searchTerms = res;
       this.responce = true;
-      console.log('search for:');
-      console.log(artist);
-      console.log('returns');
-  		console.log(this.searchTerms);
   	})
   }
 

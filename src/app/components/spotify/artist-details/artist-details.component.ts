@@ -39,15 +39,25 @@ export class ArtistDetailsComponent implements OnInit {
     this.bId   = document.getElementById('b-'+ album_id);
   	this.sp.getAlbumTracks(album_id).subscribe(res => {
   		tracks = res;
+      console.log(tracks);
       for (var i = tracks.items.length - 1; i >= 0; i--) {
-        var audio  = document.createElement("audio");
-        var footer = document.createElement("div");
-        footer.classList.add('card-footer');
-        audio.controls = true;
-        audio.preload = "auto";
-        audio.src = tracks.items[i].preview_url
-        footer.appendChild(audio);
-        this.divId.appendChild(footer);
+          if (tracks.items[i].preview_url != null){
+          var audio  = document.createElement("audio");
+          var footer = document.createElement("div");
+          var name = document.createElement('p');
+          name.innerText += tracks.items[i].name;
+          footer.classList.add('card-footer');
+          audio.controls = true;
+          audio.preload = "auto";
+          audio.src = tracks.items[i].preview_url
+          footer.appendChild(name);
+          footer.appendChild(audio);
+          this.divId.appendChild(footer);
+        }else{
+          this.divId.innerHTML += '<div class="card-footer">Track priviews are not availabel for this album</p>';
+        }
+        
+        
       }
   	})
   }
