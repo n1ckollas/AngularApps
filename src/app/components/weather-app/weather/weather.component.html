@@ -1,11 +1,15 @@
-<div *ngIf="weatherData">
-
-<h1>
-	Real Temp:
-	{{weatherData.current_observation.dewpoint_string}}
-</h1>
-<h2>
-	Feels Like:
-	{{weatherData.current_observation.feelslike_string}}
-</h2>
+<div *ngIf="weatherData" class="text-center">
+	
+	<div class="col-md-12">
+		<h1>Location: {{weatherData.current_observation.display_location.full}}</h1>
+		<img class="img-fluid" src="{{weatherData.current_observation.icon_url}}">
+		<h4>{{weatherData.current_observation.icon}}</h4>
+		<h2>
+				{{weatherData.current_observation.dewpoint_string}}
+		</h2>
+		<h4>
+				Feels Like:
+				{{weatherData.current_observation.feelslike_string}}
+		</h4>
+	</div>
 </div>

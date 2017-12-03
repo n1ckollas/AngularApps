@@ -29,8 +29,6 @@ export class ArtistDetailsComponent implements OnInit {
   	this.sp.getArtistDetails(id).subscribe(res =>{
   		this.albums = res;
   	})
-
-    
   }
 
   getTracks(album_id:string){
@@ -39,7 +37,6 @@ export class ArtistDetailsComponent implements OnInit {
     this.bId   = document.getElementById('b-'+ album_id);
   	this.sp.getAlbumTracks(album_id).subscribe(res => {
   		tracks = res;
-      console.log(tracks);
       for (var i = tracks.items.length - 1; i >= 0; i--) {
           if (tracks.items[i].preview_url != null){
           var audio  = document.createElement("audio");
