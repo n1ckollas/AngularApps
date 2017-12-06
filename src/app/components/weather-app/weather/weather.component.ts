@@ -20,4 +20,8 @@ export class WeatherComponent implements OnInit {
   	})
   }
 
+  weatherSearch(event){
+    console.log(event.target.value);
+  }
+
 }
